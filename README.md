@@ -15,6 +15,7 @@ CRUD operations are basic database operations which are Cread, Read, Update and 
 ---
 Within your download you will find following directory, grouping all classes in logical manner and in packages.
 ![directory] (directory.JPG)
+
 Also it is worth mentioning the fact that entire project is develop in Java.
 
 ## Database and server
