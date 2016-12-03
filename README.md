@@ -4,12 +4,12 @@ CRUD operations are basic database operations which are Cread, Read, Update and 
 
 ## Table of contents
 ---
-- [What is included?](#included)
-- [Database and server](#database-server)
-- [How to use project](#how-to)
+- [What is included?](#what-is-included?)
+- [Database and server](#database-and-server)
+- [How to use project](#how-to-use-project)
 - [Purpose](#purpose)
-- [Bug and feature request](#Bug-feature)
-- [Creator & References](#create-reference)
+- [Bug and feature request](#bug-and-feature-request)
+- [Creator & References](#creator-&-references)
 
 ## What is included?
 ---
