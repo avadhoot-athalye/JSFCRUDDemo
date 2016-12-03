@@ -51,8 +51,14 @@ public class Employee {
 	public void setWorking(boolean working) {
 		this.working = working;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", salary=" + salary
+				+ ", working=" + working + "]";
+	}
+
+		
 	
 	
 

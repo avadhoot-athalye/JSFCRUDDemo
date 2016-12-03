@@ -10,7 +10,7 @@ public interface EmployeeDAO {
 	List<Employee> list();
 	boolean add(Employee employee);
 	boolean update(Employee employee);
-	boolean delete(Employee employee);
+	boolean delete(int id);
 	
 
 }

@@ -8,9 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.jasper.tagplugins.jstl.core.Catch;
-
 import com.niit.Util.DBUtil;
 import com.niit.dao.EmployeeDAO;
 import com.niit.entity.Employee;
@@ -36,8 +33,31 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	
 	@Override
 	public Employee get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Employee employee = null;
+		
+		String selectSQL = "SELECT * from employee WHERE id = ?";
+		
+		try ( 
+		PreparedStatement pstmt = con.prepareStatement(selectSQL)
+		) {
+			pstmt.setInt(1, id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				employee = new Employee();
+				employee.setId(rs.getInt("id"));
+				employee.setFirstName(rs.getString("first_name"));
+				employee.setLastName(rs.getString("last_name"));
+				employee.setSalary(rs.getDouble("salary"));
+				employee.setWorking(rs.getBoolean("working"));
+				
+			}
+			
+		} catch (SQLException ex) {
+			
+			System.out.println("SQL error: " + ex.getMessage());
+		}
+		return employee;
 	}
 
 	@Override
@@ -69,7 +89,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public boolean add(Employee employee) {
 		
-		String insertQuery  = "INSERT INTO EMPLOYEE (first_name, last_name, salary, working ) VALUES (?,?,?,?)";
+		String insertQuery  = "INSERT INTO employee (first_name, last_name, salary, working ) VALUES (?,?,?,?)";
 		
 		try ( PreparedStatement pstmt = con.prepareStatement(insertQuery)) {
 			pstmt.setString(1,  employee.getFirstName());
@@ -81,21 +101,51 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			return true;
 		} catch (SQLException ex) {
 			System.out.println("SQL error: " + ex.getMessage());
+			
 			return false;
 		}
-		
+			
 	}
 
 	@Override
 	public boolean update(Employee employee) {
-		// TODO Auto-generated method stub
+		
+		String updateQuery  = "UPDATE employee SET first_name=?, last_name=?, salary=?, working=? WHERE id = ?";
+		
+		try ( PreparedStatement pstmt = con.prepareStatement(updateQuery)) {
+			pstmt.setString(1,  employee.getFirstName());
+			pstmt.setString(2,  employee.getLastName());
+			pstmt.setDouble(3,  employee.getSalary());
+			pstmt.setBoolean(4,  employee.isWorking());
+			pstmt.setInt(5, employee.getId());
+			
+			pstmt.execute();
+			return true;
+			
+		} catch (SQLException ex) {
+			System.out.println("SQL error: " + ex.getMessage());
+			
 		return false;
-	}
+	
+		}
+	}	
+		
 
 	@Override
-	public boolean delete(Employee employee) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delete(int id) {		
+		String deleteSQL = "DELETE FROM employee WHERE id = ?";
+		try ( 
+				PreparedStatement pstmt = con.prepareStatement(deleteSQL)
+		) {
+			pstmt.setInt(1, id);
+			pstmt.execute();
+			return true;
+			
+		} catch (SQLException ex) {
+			System.out.println("SQL error: " + ex.getMessage());
+			return false;
+		}
+			
 	}
 
 }
