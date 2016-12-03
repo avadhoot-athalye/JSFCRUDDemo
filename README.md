@@ -38,6 +38,7 @@ As this is simple program to perform CRUD and understand it for the beginners th
 ## Creator & References
 Even though this entire project was done by [my own self](https://avadhoot-athalye.github.io/) it was not easy for beginner like me to do it in first attempt and without any reference and help, I admit that. This is why I would like to mentioned here people who I contacted for reference.
 1. My mentor [Khozema Nullwala](https://khozema-nullwala.github.io/)
+
 2. My talented friend [Faisal Ansari](https://github.com/ansarifaisal)
 
 Please check out projects they have created and follow them if possible.
